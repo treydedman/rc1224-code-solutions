@@ -4,7 +4,7 @@ type Props = {
   captions: string[];
 };
 export function Caption({ captions }: Props) {
-  const [index, setIndex] = useState(0); // [defaultValue, setterFunction]
+  const [index, setIndex] = useState(0);
   console.log(index);
 
   function handleClick() {
