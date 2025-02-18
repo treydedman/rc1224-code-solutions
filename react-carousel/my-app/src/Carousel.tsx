@@ -3,6 +3,7 @@ import type { Image } from './App';
 import { IndicatorDots } from './IndicatorDots.tsx';
 import { Next } from './Next.tsx';
 import { Prev } from './Prev.tsx';
+import './Carousel.css';
 
 type Props = {
   images: Image[];
@@ -28,7 +29,7 @@ export function Carousel({ images }: Props) {
   }, [handleNext]);
 
   return (
-    <div>
+    <div className="img-wrapper">
       <div className="image-wrapper">
         <img
           className="current-image"

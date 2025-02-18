@@ -5,7 +5,7 @@ type NextProps = {
 };
 export function Next({ onClick }: NextProps) {
   return (
-    <button onClick={onClick}>
+    <button className="next" onClick={onClick}>
       <FaAngleRight />
     </button>
   );

@@ -34,16 +34,6 @@ h1 {
   line-height: 1.1;
 }
 
-.current-image {
-  object-fit: contain;
-  width: 100%;
-  height: 100%;
-}
-
-.image-wrapper {
-  height: 600px;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;

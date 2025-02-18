@@ -6,7 +6,7 @@ type PrevProps = {
 
 export function Prev({ onClick }: PrevProps) {
   return (
-    <button onClick={onClick}>
+    <button className="prev" onClick={onClick}>
       <FaAngleLeft />
     </button>
   );
