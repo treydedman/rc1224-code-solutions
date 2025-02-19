@@ -6,15 +6,28 @@ Answer the following questions in the provided markdown file before turning in t
 
 - In JavaScript, when is scope determined?
 
+during compilation
+
 - What allows JavaScript functions to "remember" variables from their surroundings?
+
+a closure
 
 - What values does a closure contain?
 
+the values of variables from the lexical environment in which it was created
+so it basically holds the variable(s) value(s) from the outer function's scope
+
 - When is a closure created?
+
+at function creation time
 
 - How can you tell if a function will be created with a closure?
 
+if its an inner function, if its defined inside another function
+
 - In React, what is one important case where you need to know if a closure was created?
+
+when dealing with asynchronous operations or event handlers
 
 ## Notes
 
