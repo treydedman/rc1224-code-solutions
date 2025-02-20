@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 
@@ -35,10 +35,16 @@ export function AppDrawer({ menuItems }: Props) {
         <ul className="mt-4">
           {menuItems.map((menu) => (
             <li key={menu.name} className="py-2 px-4 flex items-center">
-              <Link to={menu.path} className="flex text-white">
+              <NavLink
+                to={menu.path}
+                className={({ isActive }) =>
+                  `flex  ${
+                    isActive ? 'bg-gray-300 text-black' : 'hover:bg-gray-200'
+                  }`
+                }>
                 <img src={menu.iconUrl} alt={menu.name} className="w-6 h-6" />
                 {isOpen && <span className="ml-2 text-black">{menu.name}</span>}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
