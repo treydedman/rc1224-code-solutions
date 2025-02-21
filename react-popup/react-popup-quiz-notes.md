@@ -11,6 +11,7 @@ allows you to render components outside the current React DOM tree hierarchy of 
 - Where does a Portal get rendered in the DOM?
 
 Portals let your components render some of their children into a different place in the DOM
+the 2 arguments
 
 - When might you want to use a Portal?
 

@@ -19,10 +19,6 @@ export function Popup({
 }: Props) {
   if (!open) return null;
 
-  const r = positionTo?.getBoundingClientRect();
-  const top = r ? r.top + r.height : window.innerHeight / 2;
-  const left = r ? r.left + r.width / 2 : window.innerWidth / 2;
-
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'Escape') {
@@ -32,6 +28,10 @@ export function Popup({
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
+
+  const r = positionTo?.getBoundingClientRect();
+  const top = r ? r.top + r.height : window.innerHeight / 2;
+  const left = r ? r.left + r.width / 2 : window.innerWidth / 2;
 
   return createPortal(
     <>
