@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import { ReactNode, useEffect } from 'react';
+import { ReactNode } from 'react';
 import './Popup.css';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   positionTo?: HTMLElement | null;
   onClose: () => void;
   children: ReactNode;
-  opacity: number;
+  opacity?: number;
 };
 
 export function Popup({
@@ -19,19 +19,9 @@ export function Popup({
 }: Props) {
   if (!open) return null;
 
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'Escape') {
-        onClose();
-      }
-    }
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [onClose]);
-
   const r = positionTo?.getBoundingClientRect();
-  const top = r ? r.top + r.height : window.innerHeight / 2;
-  const left = r ? r.left + r.width / 2 : window.innerWidth / 2;
+  const top = r ? r.top + r.height : '50%';
+  const left = r ? r.left + r.width / 2 : '50%';
 
   return createPortal(
     <>
