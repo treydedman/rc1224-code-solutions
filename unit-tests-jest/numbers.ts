@@ -72,7 +72,7 @@ export function lastElement(arr: any[]): any {
  * Returns a number formatted in dollars and cents.
  */
 export function toDollars(amount: number): string {
-  return `$${amount}.00`;
+  return `$${amount.toFixed(2)}`;
 }
 
 /**
@@ -111,7 +111,7 @@ export function findMax(numbers: number[]): number {
  * Returns the number of words in the given string.
  */
 export function countWords(sentence: string): number {
-  return sentence.split(' ').length + 1;
+  return sentence.trim() === '' ? 0 : sentence.trim().split(/\s+/).length;
 }
 
 /**

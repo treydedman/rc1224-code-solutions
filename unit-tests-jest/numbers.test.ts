@@ -9,6 +9,8 @@ import {
   addNumbers,
   containsHello,
   lastElement,
+  toDollars,
+  countWords,
 } from './numbers';
 
 it('returns the even numbers', () => {
@@ -113,5 +115,45 @@ describe('lastElement', () => {
     const empty: any[] = [];
     const result = lastElement(empty);
     expect(result).toBeUndefined();
+  });
+});
+
+describe('toDollars', () => {
+  it('returns a number formatted into dollars and cents', () => {
+    const amount = 79;
+    const result = toDollars(amount);
+    expect(result).toEqual('$79.00');
+  });
+
+  it('works with 0 and negative numbers', () => {
+    expect(toDollars(0)).toEqual('$0.00');
+    expect(toDollars(-35)).toEqual('$-35.00');
+  });
+});
+
+describe('countWords', () => {
+  it('returns the number of words in a given string', () => {
+    const sentence =
+      'The Rangers will play the Dodgers in spring training on March 6.';
+    const result = countWords(sentence);
+    expect(result).toEqual(12);
+  });
+
+  it('counts single word, empty string, only spaces and extra spaces', () => {
+    expect(countWords('hi')).toEqual(1);
+  });
+
+  it('handles empty string correctly', () => {
+    expect(countWords('')).toEqual(0);
+  });
+
+  it('handles extra spaces correctly', () => {
+    expect(countWords(' hi, how  are  you today?')).toEqual(5);
+  });
+
+  // put a little extra work into this one and had to edit
+  // the original function to correctly handle only spaces
+  it('handles only spaces correctly', () => {
+    expect(countWords('       ')).toEqual(0);
   });
 });
