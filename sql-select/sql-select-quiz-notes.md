@@ -15,17 +15,34 @@ its a declarative programming language, not imperative like JavaScript
 use the select statement with the columns in quotes
 then use the from statement with the table in quotes
 
+select "column(s)"
+from "table"
+
 - How do you filter rows based on some specific criteria?
+
+to filter rows, you would use the where clause after the from clause
+
+where "row" = 'value'
 
 - What are the benefits of formatting your SQL?
 
+readability/clarity, consistency, easier to debug and or maintain
+
 - What are four comparison operators that can be used in a `where` clause?
+
+=, !=, <, >
 
 - How do you limit the number of rows returned in a result set?
 
+use the limit clause
+
 - How do you retrieve all columns from a database table?
 
+use the \*
+
 - How do you control the sort order of a result set?
+
+the order by clause
 
 ## Notes
 
