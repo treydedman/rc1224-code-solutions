@@ -95,7 +95,7 @@ app.delete('/api/actors/:actorId', async (req, res, next) => {
       return res.status(404).json({ error: 'actor not found' });
     }
 
-    res.status(204).send();
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
