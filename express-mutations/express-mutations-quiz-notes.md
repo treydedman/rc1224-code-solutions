@@ -6,9 +6,15 @@ Answer the following questions in the provided markdown file before turning in t
 
 - What is the significance of an HTTP request's method?
 
+it indicates the intended action a client wants to make
+
 - What is the significance of an HTTP response's status?
 
+it displays if a specific HTTP request has been successfully or unsuccessfully completed
+
 - What does the express.json() middleware do and when would you need it?
+
+it parses HTTP requests with JSON responses based on matched criteria
 
 ## Notes
 

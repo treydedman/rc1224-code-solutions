@@ -15,7 +15,7 @@ const app = express();
 // mount express.json
 app.use(express.json());
 
-// CREATE: POST /api/actors - route to respond to post request by inserting actor into actors table
+// CREATE: POST /api/actors - route to insert an actor in the actors table
 app.post('/api/actors', async (req, res, next) => {
   try {
     const { firstName, lastName } = req.body;
@@ -40,7 +40,7 @@ app.post('/api/actors', async (req, res, next) => {
   }
 });
 
-// UPDATE: PUT /api/actors/:actorId - route to update an actor in the actors table
+// UPDATE: PUT /api/actors/:actorId - route to update an actor in the actors table by actorId
 app.put('/api/actors/:actorId', async (req, res, next) => {
   try {
     const { actorId } = req.params;
@@ -51,18 +51,17 @@ app.put('/api/actors/:actorId', async (req, res, next) => {
       throw new ClientError(400, 'Invalid actorId');
     }
 
-    // Ensure firstName and lastName are provided
     if (!firstName || !lastName) {
       throw new ClientError(400, 'firstName and lastName are required');
     }
 
     const sql = `
-      UPDATE actor
-      SET "first_name" = $1, "last_name" = $2
-      WHERE "actor_id" = $3
+      UPDATE "actors"
+      SET "firstName" = $1, "lastName" = $2
+      WHERE "actorId" = $3
       RETURNING *;
     `;
-    const params = [firstName, lastName, actorIdNum];
+    const params = [firstName, lastName, actorId];
 
     const result = await db.query(sql, params);
     const updatedActor = result.rows[0];
@@ -74,6 +73,30 @@ app.put('/api/actors/:actorId', async (req, res, next) => {
     res.status(200).json(updatedActor);
   } catch (err) {
     console.error('Database error:', err);
+    next(err);
+  }
+});
+
+// DELETE: DELETE /api/actors/:actorId - route to delete an actor in the actors table by actorId
+app.delete('/api/actors/:actorId', async (req, res, next) => {
+  try {
+    const { actorId } = req.params;
+
+    const sql = `
+    delete from "actors"
+    where "actorId" = $1
+    returning *;
+    `;
+
+    const params = [actorId];
+    const result = await db.query(sql, params);
+
+    if (!result.rows[0]) {
+      return res.status(404).json({ error: 'actor not found' });
+    }
+
+    res.status(204).send();
+  } catch (err) {
     next(err);
   }
 });
