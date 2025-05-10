@@ -1,0 +1,34 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.popup {
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+button {
+  border: 1px solid #ccc;
+}
+
+ul {
+  padding: 0 1rem;
+  list-style: none;
+  cursor: pointer;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
